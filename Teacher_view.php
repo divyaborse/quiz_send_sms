@@ -29,7 +29,7 @@ if(isset($result)){
 	<td>'.$row->q_id.'</td>
 	<td>'.$row->question.'</td>
 	<td>'.$row->answer.'</td>
-	 <form method="post" action = "'.base_url('Teacher_q/store_score').'">
+	 <form method="post" action = "'.base_url('Teacher_ques/store_score').'">
 
 	<td><input type="text" name="score" placeholder ="enter score"> </td>
 	<input type="hidden" name="hidden_id" value="'.$row->q_id.'"/>
