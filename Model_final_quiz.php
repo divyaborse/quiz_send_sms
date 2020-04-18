@@ -3,6 +3,9 @@ class Model_final_quiz extends CI_Model{
 	function __construct() {
             parent::__construct();
         }
+        public function index(){
+        	$this->load->database('final_sub_quiz');
+        }
         public function store_data($title,$class,$subject,$chapter){
 		$this->load->database('final_sub_quiz');
 		$data=array('title'=>$title,'class'=>$class,'subject'=>$subject,'chapter'=>$chapter);
@@ -126,7 +129,7 @@ return $query;
 	}
 	public function display_quizname(){
 			$this->load->database('final_sub_quiz');
-			$this->db->select('id,title,class,subject,date,question');
+			$this->db->select('ques_id,title,class,subject,date,question');
 			$this->db->from('quiz');
 			$this->db->join('quiz_ques','quiz.id=quiz_ques.ques_id');
 			//return $this->db->get('quiz');
@@ -181,7 +184,10 @@ return $query;
 		
 
 	}
+	public function check_user($id){
+		$this->load->database('final_sub_quiz');
+		return $this->db->select('*')->from('fetch_q')->where('ques_id', $id)->get()->result_array();
+	}
 }
 	
-
 ?>
